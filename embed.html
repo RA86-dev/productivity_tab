@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Status</title>
+  <style>
+    progress {
+        background-color: green;
+        border-radius:15px;
+        height:90px;
+
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #batteryContainer {
+      text-align: center;
+    }
+
+    progress {
+      width: 200px;
+      height: 20px;
+      margin-bottom: 20px;
+    }
+
+    #chargingStatus {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div id="batteryContainer">
+  <!-- Progress bar -->
+
+
+  <progress id="batteryProgress" max="100" value="0"></progress>
+  
+  <!-- Charging status -->
+  <p id="chargingStatus"></p>
+</div>
+
+<script>
+  // Check if the Battery Status API is supported
+  if ('getBattery' in navigator) {
+    // Fetch the battery status
+    navigator.getBattery().then(function(battery) {
+      // Update the progress bar value and charging status based on the battery level
+      function updateBatteryStatus() {
+        const batteryProgress = document.getElementById('batteryProgress');
+        const chargingStatus = document.getElementById('chargingStatus');
+        battery.char
+
+
+        batteryProgress.value = battery.level * 100;
+
+        if (battery.charging) {
+          chargingStatus.textContent = 'Charging';
+
+        } else {
+          chargingStatus.textContent = 'Not Charging';
+        }
+      }
+
+      // Initial update
+      updateBatteryStatus();
+
+      // Update on battery level or charging status changes
+      battery.addEventListener('levelchange', updateBatteryStatus);
+      battery.addEventListener('chargingchange', updateBatteryStatus);
+    });
+  } else {
+    // Browser does not support Battery Status API
+    const batteryContainer = document.getElementById('batteryContainer');
+    batteryContainer.innerHTML = '<p>Battery Status API is not supported in this browser.</p>';
+  }
+</script>
+
+</body>
+</html>

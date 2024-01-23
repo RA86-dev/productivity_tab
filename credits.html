@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits</title>
+    <style>
+
+input[type="color"] {
+
+width: 150px;
+height: 50px;
+border: 2px solid #333;
+border-radius: 5px;
+
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+input {
+
+align-items: center;
+position: relative;
+max-width: 100%;
+}
+input,body,div {
+font-family: "Playfair Display", sans-serif;
+font-optical-sizing: auto;
+font-weight: 400;
+font-style: normal;
+}
+
+input {
+font-size: 18px;
+font-weight: bold;
+padding: 5px 10px;
+width: 100%;
+outline: none;
+background: #FFFFFF;
+color: #000000;
+border: 2px solid #C4D1EB;
+border-radius: 5px;
+box-shadow: 3px 3px 2px 0px #E2E2E2;
+transition: .3s ease;
+}
+
+input:focus {
+background: #F2F2F2;
+border: 1px solid #5A7EC7;
+border-radius: 10px;
+}
+
+.input::placeholder {
+color: #DDDDDD;
+}
+button{
+
+
+font-weight: 0;
+font-size: 14px;
+color: #fff;
+background-color: #0066CC;
+padding: 13px 38px;
+border: 2px solid #0066cc;
+box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+border-radius: 11px;
+transition : 1000ms;
+
+
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+}
+
+button:hover{
+
+transition : 1000ms;
+padding: 10px 50px;
+transform : translateY(-0px);
+background-color: #fff;
+color: #0066cc;
+border: solid 2px #0066cc;
+}
+
+
+select {
+position: relative;
+display: inline-block;
+margin-bottom: 15px;
+width: 100%;
+}    select select {
+    font-family: 'Arial';
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 5px 11px;
+    outline: 0;
+    border: 1px hidden #000000;
+    border-radius: 14px;
+    background: #e6e6e6;
+    color: #7b7b7b;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+    select select::-ms-expand {
+        display: none;
+    }
+    select select:hover,
+    select select:focus {
+        color: #000000;
+        background: #cccccc;
+    }
+    select select:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+.select_arrow {
+position: absolute;
+top: 16px;
+right: 15px;
+width: 0px;
+height: 0px;
+border: solid #7b7b7b;
+border-width: 0 3px 3px 0;
+display: inline-block;
+padding: 3px;
+transform: rotate(45deg);
+-webkit-transform: rotate(45deg);
+}
+select select:hover ~ .select_arrow,
+select select:focus ~ .select_arrow {
+border-color: #000000;
+}
+select select:disabled ~ .select_arrow {
+border-top-color: #cccccc;
+}
+
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #search-container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    #search-bar {
+        padding: 10px;
+        width: 300px;
+        font-size: 16px;
+    }
+
+    #search-button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #productive-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    div,
+    .todo_notes {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+    }
+
+    #editableElement {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        height: 200px;
+        overflow-y: auto;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    </style>
+</head>
+<body>
+    <p>Credits: <br>
+    <ol>
+        <li>radio.garden - (Unofficial API) API</li>
+        <li><a href="https://dictionaryapi.dev/">Dictionary API </a> for Dictionary</li>
+        <li>MusicFX for Alarm</li>
+        <li><a href="https://www.weatherapi.com/">weatherapi.com</a> for weather.</li>
+
+    </ol>
+    <a href="main.html">Go Back.</a>
+    
+    </p>
+</body>
+</html>

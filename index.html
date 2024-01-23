@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.4.0/color-thief.min.js" integrity="sha512-r2yd2GP87iHAsf2K+ARvu01VtR7Bs04la0geDLbFlB/38AruUbA5qfmtXwXx6FZBQGJRogiPtEqtfk/fnQfaYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+body {
+  --body:rgba(0, 0, 0, 0.392)
+  --text_color:antiquewhite;
+
+}
+        body {
+          
+            font-family: 'Salsa', monospace;
+            background-color: rgb(0, 0, 0);
+            color:antiquewhite;
+
+
+
+        }
+
+        input {
+            font-family: 'Salsa', monospace;
+            background-color: rgba(0, 0, 0, 0.854);
+            color:antiquewhite;
+            
+
+
+            border-radius: 12px;
+        }
+
+        button {
+            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            border: 2px solid #dcdcdc;
+            display: inline-block;
+            cursor: pointer;
+            color: #666666;
+            font-family: Trebuchet MS;
+            font-size: 18px;
+            font-weight: bold;
+            font-style: italic;
+            padding: 10px 24px;
+            text-decoration: none;
+            text-shadow: 2px 1px 50px #ffffff;
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+            background-color: #e9e9e9;
+        }
+
+        button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        input {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .columns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            flex-basis: 30%;
+            background-color:#1e1d1db6;
+
+        }
+
+        .weather-info {
+            border-radius:25px;
+            
+        }
+        #credit {
+          flex:30%;
+          background-color: rgba(0, 0, 0, 0.754);
+          border:2px solid rgb(255, 255, 255);
+          border-radius:12px;
+        }
+        a {
+          color:white;
+        }
+    </style>
+    <title>Weather Forecast</title>
+    <script src="https://cdn.jsdelivr.net/npm/ascii85@0.4.0/dist/ascii85.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Weather Forecast</h1>
+        <b>Search Control:</b><br>
+        <input type="search" id="locationInput" placeholder="Enter location or ZIP code or type a country " style="width:100%"><br>
+            
+                <script type="module">
+                    
+                    import { getApiKey } from '/scripts/config.js';
+                    document.getElementById('getWeatherButton').addEventListener('click', getWeather);
+                    function getWeather() {
+                        const location = document.getElementById('locationInput').value;
+                        const apiUrl = `${baseUrl}?key=${apiKey}&q=${location}&days=3&aqi=yes`;
+            
+                        fetchWeather(apiUrl);
+                    }
+            
+                    function useSearch() {}
+                    function getSelect(){ 
+                        let req = document.getElementById('select').value;
+                        if (req == "a1") {
+                            document.body.style.margin = '0';
+            
+                document.body.style.display = 'flex';
+                document.body.style.alignItems = 'center';
+                document.body.style.justifyContent = 'center';
+                document.body.style.height = '100vh';
+                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random")';
+                document.body.style.backgroundSize = 'cover';
+                        }
+                        else if (req = "a2") {
+            
+                document.body.style.display = 'flex';
+                document.body.style.alignItems = 'center';
+                document.body.style.justifyContent = 'center';
+                document.body.style.height = '100vh';
+                document.body.style.backgroundImage = 'url("image1.jpeg")';
+                document.body.style.backgroundSize = 'cover';
+                        } else if (req == "a3") {
+            
+                document.body.style.display = 'flex';
+                document.body.style.alignItems = 'center';
+                document.body.style.justifyContent = 'center';
+                document.body.style.height = '100vh';
+                document.body.style.backgroundImage = 'url("image2.jpeg")';
+                document.body.style.backgroundSize = 'cover';
+            
+                        }
+                    }
+             function getImageThemeColor(urlx) {
+                        return new Promise((resolve, reject) => {
+                            const img = new Image();
+                            img.crossOrigin = 'Anonymous';
+                            img.src = urlx;
+            
+                            img.onload = function() {
+                                const colorThief = new ColorThief();
+                                const palette = colorThief.getPalette(img, 3);
+            
+                                if (palette.length >= 3) {
+                                    const color1 = palette[0];
+                                    const color2 = palette[1];
+                                    const color3 = palette[2];
+                                    resolve({
+                                        color1: color1,
+                                        color2: color2,
+                                        color3: color3
+            
+                                    });
+                                } else {
+                                    reject('Not enough colors in the palette.');
+                                }
+                            };
+            
+                            img.onerror = function() {
+                                reject('Image failed to load.');
+                            };
+                        });
+                    }
+                    
+            
+            
+                    const apiKey = getApiKey();
+            
+            
+                    const baseUrl = 'https://api.weatherapi.com/v1/forecast.json';
+                    wekl()
+                    let userToken = localStorage.getItem('userToken') || generateUserToken();
+                    const onlyUserToken = userToken.split('SPLT')[0]
+                    if (userToken.includes("SPLT")) {
+                        const splIndex = userToken.indexOf("SPLT");
+            
+            // Check if "SPLT" is present
+            if (splIndex !== -1) {
+                // Extract the existing location encoded in "SPLT" data
+                const existingLocation = userToken.substring(splIndex + 4);
+            
+                // Use the existingLocation as needed in your code
+                let x = decodeURIComponent(existingLocation);
+                console.log(x);
+                getWeatherAuto(x);
+            }
+            
+            
+            
+                    }
+                    localStorage.setItem('userToken', userToken);
+            
+                    function generateUserToken() {
+                        // A simple function to generate a random token
+                        return 'user_' + Math.random().toString(36).substr(2, 9);
+                    }function getWeatherAuto(low) {
+            
+                        const apiUrl = `${baseUrl}?key=${apiKey}&q=${low}&days=3&aqi=yes`;
+            
+                        fetchWeather(apiUrl);
+                    }
+            
+                    function getWeatherByGeolocation() {
+                        if ('geolocation' in navigator) {
+                            navigator.geolocation.getCurrentPosition(
+                                (position) => {
+                                    const { latitude, longitude } = position.coords;
+                                    const apiUrl = `${baseUrl}?key=${apiKey}&q=${latitude},${longitude}&days=3`;
+            
+                                    fetchWeather(apiUrl);
+                                },
+                                (error) => {
+                                    console.error('Error getting geolocation:', error.message);
+                                }
+                            );
+                        } else {
+                            alert('Geolocation is not supported by your browser');
+                        }
+                    }
+            
+                    function fetchWeather(apiUrl) {
+                        fetch(apiUrl)
+                            .then(response => response.json())
+                            .then(data => {
+                                updateUI(data);
+                            })
+                            .catch(error => {
+                                console.error('Error fetching weather data:', error);
+                            });
+                    }
+                    function encode_ascii85(text) {
+               ascii85.encode(text)
+              }
+            
+              function decode_ascii85(encodedAscii) {
+                ascii85.decode(encodedAscii)
+              }
+                    async function getFlag(country_name) {
+                        const apiUrl = `https://restcountries.com/v3.1/name/${encodeURIComponent(country_name)}?fields=flags`;
+            
+                        try {
+                            const response = await fetch(apiUrl);
+                            const data = await response.json();
+            
+                            if (response.ok && data.length > 0) {
+                                return data[0]?.flags?.svg || null;
+                            } else {
+                                console.error(`Flag information not found for ${country_name}`);
+                                return null;
+                            }
+                        } catch (error) {
+                            console.error(`Error fetching flag information: ${error.message}`);
+                            return null;
+                        }
+                    }
+            
+            
+                    function wekl() {
+                        
+                        
+                    }
+            
+                
+            
+                    function updateUI(data) {
+                        console.log(data)
+                        let r = "United States"
+            const splIndex = userToken.indexOf("SPLT");
+            if (splIndex !== -1) {
+                // Remove everything beyond "SPLT"
+                userToken = userToken.substring(0, splIndex);
+            }
+            
+            // Add new "SPLT" data
+            let vxc= encodeURIComponent(`${data.location.name},${data.location.region},${data.location.country}`);
+            
+            userToken +="SPLT " 
+            userToken+=vxc
+            console.log('Updated userToken:', userToken);  // Add this line for debugging
+            localStorage.setItem('userToken', userToken);
+            wekl()
+            let visib = 0.00
+            let dewPoint = 0.00
+            let avgt = 0.00;
+            const weatherGOV = `https://api.weather.gov/points/${data.location.lat},${data.location.lon}`
+            fetch
+              
+                        let cv1;
+                        let cv2;
+                        let cv3; // Add this line to declare cv3
+            
+                        const weatherInfoElement = document.getElementById('weatherInfo');
+                        weatherInfoElement.innerHTML = '';
+                        const rx = data.location.country;
+                        console.log(data.location.name)
+                        console.log(data.location.region)
+                        console.log(data.location.country)
+                        getFlag(data.location.country)
+                            .then(flag => {
+                                r = flag;
+                                getImageThemeColor(flag).then(colors => {
+                        console.log(colors.color1, colors.color2);
+                         cv1 = colors.color1;
+                         cv2 = colors.color2;
+                    }).catch(error => {
+                        console.error(error);
+                    });
+                    getImageThemeColor(flag).then(colors => {
+                console.log(colors.color1, colors.color2);
+                cv1 = colors.color1;
+                cv2 = colors.color2;
+                cv3 = colors.color3;
+                                const locationHTML = `
+                                    <div class="column">
+                                        <h2>${data.location.name || ''} ${data.location.region || ''}, ${data.location.country || ''}</h2>
+                                        <p>Latitude: ${data.location.lat || ''}, Longitude: ${data.location.lon || ''}</p>
+                                        <p>Timezone: ${data.location.tz_id || ''}</p>
+                                        <p>Local Time: ${data.location.localtime || ''}</p>
+                                        <img src="${r}" width="500" height="250"><br>
+                                        <p>Color Themes:<br></p>
+                    <div height="125" width="125" style="background-color: rgb(${cv1[0]},${cv1[1]},${cv1[2]})">THEME 1</div>
+                    <div height="125" width="125" style="background-color: rgb(${cv2[0]},${cv2[1]},${cv2[2]})">THEME 2</div>
+                    <div height="125" width="125" style="background-color: rgb(${cv3[0]},${cv3[1]},${cv3[2]})">THEME 3</div>
+                                    </div>
+                                `;
+                                weatherInfoElement.innerHTML += locationHTML;
+                    })
+                                // Current Weather
+                                const currentWeather = data.current;
+                                const currentWeatherHTML = `
+                                    <div class="column">
+                                        <h3>Current Weather</h3>
+                                        <p>Last Updated: ${currentWeather.last_updated || ''}</p>
+                                        <p>Temperature: ${currentWeather.temp_c || ''}°C (${currentWeather.temp_f || ''}°F)</p>
+                                        <p>Condition: ${currentWeather.condition.text || ''}</p>
+                                        <img src="https:${currentWeather.condition.icon || ''}" alt="${currentWeather.condition.text || ''}">
+                                        <p>Wind: ${currentWeather.wind_kph || ''} km/h, ${currentWeather.wind_degree || ''}° ${currentWeather.wind_dir || ''}</p>
+                                        <p>Pressure: ${currentWeather.pressure_mb || ''} mb (${currentWeather.pressure_in || ''} in)</p>
+                                        <p>Precipitation: ${currentWeather.precip_mm || ''} mm (${currentWeather.precip_in || ''} in)</p>
+                                        <p>Humidity: ${currentWeather.humidity || ''}%</p>
+                                        <p>Cloudiness: ${currentWeather.cloud || ''}%</p>
+                                        <p>Feels Like: ${currentWeather.feelslike_c || ''}°C (${currentWeather.feelslike_f || ''}°F)</p>
+                                        <p>Visibility: ${currentWeather.vis_km || ''} km (${currentWeather.vis_miles || ''} miles)</p>
+                                        <p>UV Index: ${currentWeather.uv || ''}</p>
+                                        <p>Gust: ${currentWeather.gust_kph || ''} km/h (${currentWeather.gust_mph || ''} mph)</p>
+                                       
+                                    </div>
+                                `;
+                                weatherInfoElement.innerHTML += currentWeatherHTML;
+            
+                                // Air Quality
+                                const airQuality = data.current.air_quality;
+                                const airQualityHTML = `
+                                    <div class="column">
+                                        <h3>Air Quality</h3>
+                                        <p>CO: ${airQuality["co"] || ''}μg/m^3</p>
+                                        <p>NO2: ${airQuality["no2"] || ''}μg/m^3</p>
+                                        <p>O3: ${airQuality["o3"] || ''}μg/m^3</p>
+                                        <p>SO2: ${airQuality["so2"] || ''}μg/m^3</p>
+                                        <p>PM2.5: ${airQuality["pm2_5"] || ''}μg/m^3</p>
+                                        <p>PM10: ${airQuality["pm10"] || ''}μg/m^3</p>
+                                        <p>US EPA Index: ${airQuality['us-epa-index'] || ''}</p>
+                                        <p>GB DEFRA Index: ${airQuality['gb-defra-index'] || ''}</p>
+                                    </div>
+                                </div>
+                                `;
+                                weatherInfoElement.innerHTML += airQualityHTML;
+            
+                                // Forecast Data
+                                const forecastData = data.forecast.forecastday;
+                                const day1_F = forecastData[0].day.avgtemp_f;
+                                const day2_F = forecastData[1].day.avgtemp_f;
+                                const day3_F = forecastData[2].day.avgtemp_f;
+            
+                                const day1_astro = forecastData[0].astro;
+                                const day2_astro = forecastData[1].astro;
+                                const day3_astro = forecastData[2].astro;
+                                const day1_condition = forecastData[0].day.condition.text;
+                                const day2_condition = forecastData[1].day.condition.text;
+                                const day3_condition = forecastData[2].day.condition.text;
+            
+                                const SnippetASTROHTML = `
+                                    <div class="columns">
+                                        <div class="column">
+                                            <br><br><br><br><br><br>
+                                            <h2>Forecast Data:</h2>
+                                        </div>
+                                        <div class="column">
+                                            <h3>Day 1:</h3>
+                                            Condition: ${day1_condition}<br>
+                                            Average Temperature: ${day1_F}°F<br>
+                                            Sunrise: ${day1_astro.sunrise}<br>
+                                            Moon Phase: ${day1_astro.moon_phase}<br>
+                                            Sunset: ${day1_astro.sunset}<br>
+                                            Moonrise: ${day1_astro.moonrise}<br>
+                                            Moonset: ${day1_astro.moonset}<br>
+                                        </div>
+                                        <div class="column">
+                                            <h3>Day 2:</h3>
+                                            Condition: ${day2_condition}<br>
+            
+                                            Average Temperature: ${day2_F}°F<br>
+                                            Sunrise: ${day2_astro.sunrise}<br>
+                                            Moon Phase: ${day2_astro.moon_phase}<br>
+                                            Sunset: ${day2_astro.sunset}<br>
+                                            Moonrise: ${day2_astro.moonrise}<br>
+                                            Moonset: ${day2_astro.moonset}<br>
+                                        </div>
+                                        <div class="column">
+                                            <h3>Day 3:</h3>
+                                            Condition: ${day3_condition}<br>
+            
+                                            Average Temperature: ${day3_F}°F<br>
+                                            Sunrise: ${day3_astro.sunrise}<br>
+                                            Moon Phase: ${day3_astro.moon_phase}<br>
+                                            Sunset: ${day3_astro.sunset}<br>
+                                            Moonrise: ${day3_astro.moonrise}<br>
+                                            Moonset: ${day3_astro.moonset}<br>
+                                        </div>
+                                    </div>
+                                `;
+                                weatherInfoElement.innerHTML += SnippetASTROHTML;
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    }
+                </script>
+<button id="getWeatherButton">Get Weather</button>
+
+
+ 
+        <div class="credits">
+            Photo by <a href="https://unsplash.com/@pic_nolte?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Christoph Nolte</a> on <a href="https://unsplash.com/photos/the-sun-is-setting-over-a-snowy-landscape-ytwxfoQ8zHc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a><br>
+            Photo by <a href="https://unsplash.com/@wenhao_ryan?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Wenhao Ryan</a> on <a href="https://unsplash.com/photos/a-mountain-range-is-reflected-in-the-still-water-of-a-lake-yBDAp3vesZE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+            <p>Unplash for random mode image</p>
+            
+  
+        <p>Powered By </p><a href="https://www.weatherapi.com/" title="Free Weather API"><img
+                src='https://cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com"
+                border="0"></a><br>
+                <p>Powered By <a href="https://www.tomorrow.io/">Tommorow IO</a></p>
+              
+              <a href="https://restcountries.com/">Rest Country for flags</a></div>
+        <div class="weather-info">
+            <div class="columns" id="weatherInfo">
+
+            </div>
+       
+          
+        </div>
+    </div>
+</body>
+
+</html>
