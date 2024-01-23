@@ -295,10 +295,6 @@ iframe {
 	overflow-y: auto;
 }
 
-/* Setting specific styles */
-.settings input[type='color'] {
-
-}
 
 /* Typography and spacing for headings */
 h1, h2, h3, h4, h5, h6 {
@@ -327,6 +323,28 @@ h2 {
 	    function credits() {
 		    window.location.href = "credits.html";
 	    }
+        function focusEnable() {
+            const a =  document.getElementById('a')
+            const b =  document.getElementById('b')
+            const c =  document.getElementById('c')
+            a.style.display = "none";
+            b.style.display = "none";
+            c.style.display = "none";
+            document.body.style.backgroundColor = "black";
+
+            document.body.style.color = "white";
+        }
+        function focusDisable() {
+            const a =  document.getElementById('a')
+            const b =  document.getElementById('b')
+            const c =  document.getElementById('c')
+            a.style.display = "block";
+            b.style.display = "block";
+            c.style.display = "block";
+            document.body.style.backgroundColor = "white";
+            document.body.style.color = "black";
+
+        }
     </script>
     <!-- SCRIPT INPUT-->
     <script src="/productivity_tab/scripts/conversion_script.js"></script>
@@ -352,7 +370,7 @@ h2 {
 
     <div id="productive-area">
 	    
-        <div class="weather">
+        <div class="weather" id="a">
 		
             <iframe src="index.html">
                 Your Browser does not support Iframes. 
@@ -377,7 +395,7 @@ h2 {
             </div>
            
         </div>
-        <div class="new">
+        <div class="new" id="b">
             <h2>Conversion:</h2>
             <label for="quantityInput">Quantity:</label>
             <input type="number" id="quantityInput" oninput="convertUnits()">
@@ -410,7 +428,7 @@ h2 {
   <span id="result">0</span>
 
         </div>
-        <div class="battery">
+        <div class="battery" id="c">
             <iframe src="embed.html"
             width="500px" height="500px"
             ></iframe>
@@ -420,6 +438,8 @@ h2 {
             <label for="seconds">Enter seconds:</label>
         <input type="number" id="seconds" min="1" placeholder="Enter seconds">
         <button onclick="startTimer()">Start Timer</button>
+        <button onclick="focusEnable()">Enable Focus Mode</button>
+        <button onclick="focusDisable">Disable Focus Mode</button>
 	<button onclick="snz()">Snooze</button>
         <p id="timer"></p>
         <audio id="alarmAudio" src="alarm.mp3"></audio>
