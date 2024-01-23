@@ -110,7 +110,7 @@ body {
                 <script type="module">
                     
                     import { getApiKey } from '/productivity_tab/scripts/config.js';
-                    console.log(getApiKey())
+
                     document.getElementById('getWeatherButton').addEventListener('click', getWeather);
                     function getWeather() {
                         const location = document.getElementById('locationInput').value;
@@ -185,6 +185,7 @@ body {
             
             
                     const apiKey = getApiKey();
+                    console.log(apiKey)
             
             
                     const baseUrl = 'https://api.weatherapi.com/v1/forecast.json';
