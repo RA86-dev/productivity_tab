@@ -10,10 +10,15 @@ function startTimer() {
         return;
     }
 
-    timerDisplay.textContent = `Timer set for ${seconds} seconds.`;
+    timerDisplay.textContent = `Timer set for ${seconds} seconds. `;
 
     setTimeout(() => {
         timerDisplay.textContent = "Time's up!";
         alarmAudio.play();
     }, seconds * 1000);
+}
+function snz() {
+    const alarmAudio = document.getElementById("alarmAudio");
+    alarmAudio.pause()
+
 }
