@@ -22,11 +22,12 @@ function clear() {
 
 }
 function addTasks() {
+    localTasks = []
+ 
     task = prompt('Task name:')
     localTasks.push(task)
     AppendTask(task)
     save()
-    localTasks = []
 
 }// Assuming localTasks is an array declared somewhere in your code
 function save() {
