@@ -351,50 +351,43 @@ h2 {
             document.body.style.color = "black";
 
         }
-	      // Function to create and start the timer with progress bar
-  function startTimer(durationInSeconds) {
-    let timeLeft = durationInSeconds ;
+function startTimer(durationInSeconds) {
+    let timeLeft = durationInSeconds;
 
-    // Function to update the progress bar and timer display
     function updateTimer() {
-      const progressBar = document.getElementById('timerProgressBar');
-      const timerDisplay = document.getElementById('timerDisplay');
+        const progressBar = document.getElementById('timerProgressBar');
+        const timerDisplay = document.getElementById('timerDisplay');
 
-      // Calculate the progress percentage
-      const progress = ((durationInSeconds - timeLeft) / durationInSeconds) * 100;
+        const progress = ((durationInSeconds - timeLeft) / durationInSeconds) * 100;
 
-      // Update the progress bar and timer display
-      progressBar.value = progress;
-      timerDisplay.textContent = formatTime(timeLeft);
+        progressBar.value = progress;
+        timerDisplay.textContent = formatTime(timeLeft);
 
-      // Decrease the time left
-      timeLeft--;
+        timeLeft--;
 
-      // Check if the timer has reached 0
-      if (timeLeft < 0) {
-        clearInterval(timerInterval);
-        document.getElementById('xzz').play()
-      }
+        if (timeLeft < 0) {
+            clearInterval(timerInterval);
+            document.getElementById('xzz').play();
+        }
     }
 
-    // Function to format the time in MM:SS format
     function formatTime(seconds) {
-      const minutes = Math.floor(seconds / 60);
-      const remainingSeconds = seconds % 60;
-      return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     }
 
-    // Initial update
     updateTimer();
 
-    // Set up the timer interval (1000 milliseconds = 1 second)
     const timerInterval = setInterval(updateTimer, 1000);
-  }
-  function time() {
-    let data = document.getElementById('x').value;
-    let time = data * 60
-    startTimer(time)
-  }
+}
+
+function time() {
+    const data = document.getElementById('x').value;
+    let time = data * 60;
+    startTimer(time);
+}
+
 
   // Start the timer with a duration of 5 minutes (300 seconds)
 
