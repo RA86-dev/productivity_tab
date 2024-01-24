@@ -313,6 +313,11 @@ h2 {
 </head>
 <body>
     <script>
+	    function GPT() {
+		    let data = encodeURIComponent(document.getElementById("getGPT").value);
+		    window.location.href = `https://chat.openai.com/?prompt-text=${data}`;
+		    
+	    }
         function search() {
         const  r =document.getElementById('select').value;
         const text = encodeURIComponent(document.getElementById('search-bar').value);
@@ -480,6 +485,11 @@ h2 {
         <div class="calculator">
             <iframe src="embedcalc.html" width="500px" height="500px">
         </div>
+	    <div class="chat-gpt">
+		<input type="text" id="getGPT">
+		<button onclick="GPT()">Ask ChatGPT (Requires Account)</button>
+		    
+	    </div>
         
             
     </div>
