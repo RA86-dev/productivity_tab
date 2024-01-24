@@ -48,10 +48,6 @@ function load() {
 }
 function AppendTask() {
     localTasks = []
- 
-    let length = localTasks.length;
-
-    for (let i = 0; i < length; i++) {
         const taskName = localTasks[i];
 
         // Create a new list item
@@ -63,7 +59,7 @@ function AppendTask() {
 
         // Append the task name to the localTasks array
         localTasks.push(taskName);
-    }
+    
 }
 
 // Example function for removing and completing a task
