@@ -315,7 +315,7 @@ h2 {
     <script>
 	    function GPT() {
 		    let data = encodeURIComponent(document.getElementById("getGPT").value);
-		    window.location.href = `https://chat.openai.com/?prompt-text=${data}`;
+		    window.open(`https://chat.openai.com/?prompt-text=${data}`);
 		    
 	    }
         function search() {
