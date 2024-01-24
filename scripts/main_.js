@@ -1,4 +1,4 @@
-const localTasks = [];
+let localTasks = [];
 
 document.addEventListener("DOMContentLoaded", function() {
     editableElement.addEventListener('input', saveEdit);
