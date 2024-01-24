@@ -313,12 +313,62 @@ h2 {
     </style>
 </head>
 <body>
-    <!-- SCRIPT INPUT-->
-    <script src="/productivity_tab/scripts/conversion_script.js"></script>
-    <script src="/productivity_tab/scripts/main_.js"></script>
-    <script src="/productivity_tab/scripts/alarm.js"></script>
-    <script src="/productivity_tab/scripts/settings.js"></script>
-    <script src="/productivity_tab/scripts/dict.js"></script>
+<!-- Place this script before other scripts -->
+<script>
+    // Function to create and start the timer with progress bar
+    function startTimer(durationInSeconds) {
+        let timeLeft = durationInSeconds;
+
+        // Function to update the progress bar and timer display
+        function updateTimer() {
+            const progressBar = document.getElementById('timerProgressBar');
+            const timerDisplay = document.getElementById('timerDisplay');
+
+            // Calculate the progress percentage
+            const progress = ((durationInSeconds - timeLeft) / durationInSeconds) * 100;
+
+            // Update the progress bar and timer display
+            progressBar.value = progress;
+            timerDisplay.textContent = formatTime(timeLeft);
+
+            // Decrease the time left
+            timeLeft--;
+
+            // Check if the timer has reached 0
+            if (timeLeft < 0) {
+                clearInterval(timerInterval);
+                document.getElementById('xzz').play();
+            }
+        }
+
+        // Function to format the time in MM:SS format
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+
+        // Initial update
+        updateTimer();
+
+        // Set up the timer interval (1000 milliseconds = 1 second)
+        const timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Function to handle the 'Time' button click
+    function time() {
+        const data = document.getElementById('x').value;
+        let time = data * 60;
+        startTimer(time);
+    }
+</script>
+
+<!-- Include your other scripts here -->
+<script src="/productivity_tab/scripts/conversion_script.js"></script>
+<script src="/productivity_tab/scripts/main_.js"></script>
+<script src="/productivity_tab/scripts/alarm.js"></script>
+<script src="/productivity_tab/scripts/settings.js"></script>
+<script src="/productivity_tab/scripts/dict.js"></script>
 
 
     <div id="search-container">
