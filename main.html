@@ -407,6 +407,7 @@ h2 {
 
 <!-- Display the timer -->
 <div id="timerDisplay"></div>
+		<label for="xzz">Timer (in seconds)</label>
 <audio src="finishTmp.mp3" id="xzz"></audio>
 <input type="number" id="x">
 <button onclick="time()">Time</button>
@@ -463,6 +464,12 @@ h2 {
     </div>
 	
     <script>
+	    
+function time() {
+    const data = document.getElementById('x').value;
+    
+    startTimer(time);
+}
 	    function GPT() {
 		    let data = encodeURIComponent(document.getElementById("getGPT").value);
 		    window.open(`https://chat.openai.com/?prompt-text=${data}`);
@@ -531,11 +538,6 @@ function startTimer(durationInSeconds) {
     const timerInterval = setInterval(updateTimer, 1000);
 }
 
-function time() {
-    const data = document.getElementById('x').value;
-    let time = data * 60;
-    startTimer(time);
-}
 
 
   // Start the timer with a duration of 5 minutes (300 seconds)
