@@ -391,7 +391,7 @@ h2 {
     const timerInterval = setInterval(updateTimer, 1000);
   }
   function time() {
-    const data = document.getElementById('x').value;
+    let data = document.getElementById('x').value;
     let time = data * 60
     startTimer(time)
   }
