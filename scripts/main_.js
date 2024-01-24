@@ -7,9 +7,13 @@
      // For example, calling your AppendTask function
 });
 function load2() {
+    localTasks = []
+ 
     document.getElementById('editableElement').innerHTML = localStorage.getItem('Saved')
 }
 function saveEdit() {
+    localTasks = []
+ 
     const rv = document.getElementById('editableElement').innerHTML;
     localStorage.setItem('Saved',rv);
 
@@ -31,14 +35,20 @@ function addTasks() {
 
 }// Assuming localTasks is an array declared somewhere in your code
 function save() {
+    localTasks = []
+ 
     let x =document.getElementById('todo_obj').innerHTML;
     localStorage.setItem("store",x)
 }
 function load() {
+    localTasks = []
+ 
     let xcz = localStorage.getItem("store")
     document.getElementById("todo_obj").innerHTML = xcz;
 }
 function AppendTask() {
+    localTasks = []
+ 
     let length = localTasks.length;
 
     for (let i = 0; i < length; i++) {
@@ -58,6 +68,8 @@ function AppendTask() {
 
 // Example function for removing and completing a task
 function removeAndComplete(button) {
+    localTasks = []
+ 
     // Access the task name by navigating to the previous sibling (text node)
     const taskName = button.previousSibling.textContent.trim();
 
