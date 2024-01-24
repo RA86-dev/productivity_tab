@@ -312,23 +312,24 @@ h2 {
 
     </style>
 </head>
-<body>
-<!-- Place this script before other scripts -->
+<body><!-- Include your other scripts first -->
+<script src="/productivity_tab/scripts/conversion_script.js"></script>
+<script src="/productivity_tab/scripts/main_.js"></script>
+<script src="/productivity_tab/scripts/alarm.js"></script>
+<script src="/productivity_tab/scripts/settings.js"></script>
+<script src="/productivity_tab/scripts/dict.js"></script>
+
+<!-- Place this script last -->
 <script>
-    // Function to create and start the timer with progress bar
+    // Function to create and start the timer
     function startTimer(durationInSeconds) {
         let timeLeft = durationInSeconds;
 
-        // Function to update the progress bar and timer display
+        // Function to update the timer display
         function updateTimer() {
-            const progressBar = document.getElementById('timerProgressBar');
             const timerDisplay = document.getElementById('timerDisplay');
 
-            // Calculate the progress percentage
-            const progress = ((durationInSeconds - timeLeft) / durationInSeconds) * 100;
-
-            // Update the progress bar and timer display
-            progressBar.value = progress;
+            // Update the timer display
             timerDisplay.textContent = formatTime(timeLeft);
 
             // Decrease the time left
@@ -362,14 +363,6 @@ h2 {
         startTimer(time);
     }
 </script>
-
-<!-- Include your other scripts here -->
-<script src="/productivity_tab/scripts/conversion_script.js"></script>
-<script src="/productivity_tab/scripts/main_.js"></script>
-<script src="/productivity_tab/scripts/alarm.js"></script>
-<script src="/productivity_tab/scripts/settings.js"></script>
-<script src="/productivity_tab/scripts/dict.js"></script>
-
 
     <div id="search-container">
 	<button onclick="credits()">Credits</button>
@@ -512,88 +505,7 @@ h2 {
         
             
     </div>
-	
-    <script>
-	    
-function time() {
-    const data = document.getElementById('x').value;
-    
-    startTimer(time);
-}
-	    function GPT() {
-		    let data = encodeURIComponent(document.getElementById("getGPT").value);
-		    window.open(`https://chat.openai.com/?prompt-text=${data}`);
-		    
-	    }
-        function search() {
-        const  r =document.getElementById('select').value;
-        const text = encodeURIComponent(document.getElementById('search-bar').value);
-        const url = r + text
-        window.location.href =url;
-    
-    }
-	    function credits() {
-		    window.location.href = "credits.html";
-	    }
-        function focusEnable() {
-            const a =  document.getElementById('a')
-            const b =  document.getElementById('b')
-            const c =  document.getElementById('c')
-            a.style.display = "none";
-            b.style.display = "none";
-            c.style.display = "none";
-            document.body.style.backgroundColor = "black";
 
-            document.body.style.color = "white";
-        }
-        function focusDisable() {
-            const a =  document.getElementById('a')
-            const b =  document.getElementById('b')
-            const c =  document.getElementById('c')
-            a.style.display = "block";
-            b.style.display = "block";
-            c.style.display = "block";
-            document.body.style.backgroundColor = "white";
-            document.body.style.color = "black";
-
-        }
-function startTimer(durationInSeconds) {
-    let timeLeft = durationInSeconds;
-
-    function updateTimer() {
-        const progressBar = document.getElementById('timerProgressBar');
-        const timerDisplay = document.getElementById('timerDisplay');
-
-        const progress = ((durationInSeconds - timeLeft) / durationInSeconds) * 100;
-
-        progressBar.value = progress;
-        timerDisplay.textContent = formatTime(timeLeft);
-
-        timeLeft--;
-
-        if (timeLeft < 0) {
-            clearInterval(timerInterval);
-            document.getElementById('xzz').play();
-        }
-    }
-
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-    }
-
-    updateTimer();
-
-    const timerInterval = setInterval(updateTimer, 1000);
-}
-
-
-
-  // Start the timer with a duration of 5 minutes (300 seconds)
-
-    </script>
-        
 
 </body>
 </html>
