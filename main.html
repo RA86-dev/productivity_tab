@@ -362,6 +362,17 @@ h2 {
         let time = data * 60;
         startTimer(time);
     }
+	function search() {
+        const  r =document.getElementById('select').value;
+        const text = encodeURIComponent(document.getElementById('search-bar').value);
+        const url = r + text
+        window.location.href = `${url}?tgref=HOMIE`
+
+    
+    }
+	function credits() {
+		window.location.href = "credits.html";
+	}
 </script>
 
     <div id="search-container">
