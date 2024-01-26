@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productivity Tab</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
 input[type="color"] {
@@ -323,7 +325,21 @@ h2 {
 <script>
 	
 
+ gsap.to("#search-container", {
+        duration: 0.5, // Animation duration in seconds
+        backgroundColor: "#ff0000", // Target background color
+        ease: "power1.inOut", // Easing function
+        paused: true // Animation starts paused
+    });
 
+    // Add event listener to trigger animation on hover
+    document.getElementById("search-container").addEventListener("mouseenter", function() {
+        gsap.to("#search-container", { backgroundColor: "#ff0000", duration: 0.5 });
+    });
+
+    document.getElementById("search-container").addEventListener("mouseleave", function() {
+        gsap.to("#search-container", { backgroundColor: "#FFFFFF", duration: 0.5 });
+    });
 	function question() {
 		window.location.href = "https://forms.gle/JR6A89cHHEurNPPF9";
 	}
