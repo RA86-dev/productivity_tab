@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
+	    @import url('https://fonts.googleapis.com/css2?family=Gabarito&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playpen+Sans&display=swap');
 input[type="color"] {
 
     width: 150px;
@@ -411,7 +412,7 @@ h2 {
 
 <!-- Display the timer -->
 <div id="timerDisplay"></div>
-		<label for="xzz">Timer (in minutes)</label>
+		<label for="xzz">Timer (in minutes)/label>
 <audio src="finishTmp.mp3" id="xzz"></audio>
 <input type="number" id="x">
 <button onclick="time()">Time</button>
@@ -442,6 +443,13 @@ h2 {
             <input type="color" id="text_color" style="height:50px;">
             <p>Text Size (px):</p>
             <input type="number" value="10" id="text_size">
+		<select id="fontFamily">
+			<option value="Gabarito">Gabarito</option>
+			<option value="Pixelify Sans">Pixelify Sans</option>
+			<option value="Playfair Display">Playfair Sans</option>
+			<option value="Playpen Sans">Playpen Sans</option>
+			
+		</select>
 
             <button onclick="settings()">Apply</button>
         </div>
