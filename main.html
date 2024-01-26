@@ -479,16 +479,12 @@ h2 {
     });
 
     // Add event listener to trigger animation on hover
-    document.getElementById("search-container").addEventListener("mouseenter", function() {
-        gsap.to("#search-container", { backgroundColor: "#ff0000", duration: 0.5 });
-    });
 
-    document.getElementById("search-container").addEventListener("mouseleave", function() {
+        gsap.to("#search-container", { backgroundColor: "#ff0000", duration: 0.5 });
+
+
+
         gsap.to("#search-container", { backgroundColor: "#FFFFFF", duration: 0.5 });
-    });
-	function question() {
-		window.location.href = "https://forms.gle/JR6A89cHHEurNPPF9";
-	}
     // Function to create and start the timer
     function startTimer(durationInSeconds) {
         let timeLeft = durationInSeconds;
