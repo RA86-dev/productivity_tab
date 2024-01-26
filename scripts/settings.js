@@ -114,4 +114,11 @@ function displaySystemInformation() {
     systemInfoDiv.innerHTML = systemInfoString;
 }
 
-displaySystemInformation();
+document.addEventListener('DOMContentLoaded', function() {
+    const displayInfoBtn = document.getElementById('display-info-btn');
+
+    displayInfoBtn.addEventListener('click', function() {
+        displaySystemInformation();
+    });
+});
+
