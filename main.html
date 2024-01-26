@@ -321,6 +321,17 @@ h2 {
 
 <!-- Place this script last -->
 <script>
+	
+async function fetchTemperature() {
+  try {
+    const response = await fetch('/temperature');
+    const data = await response.json();
+    document.getElementById('temperature').innerText = `CPU Temperature: ${data.temperature}`;
+  } catch (error) {
+    console.error('Error fetching temperature:', error);
+  }
+}
+
 	function question() {
 		window.location.href = "https://forms.gle/JR6A89cHHEurNPPF9";
 	}
@@ -517,6 +528,10 @@ h2 {
         <div class="calculator">
             <iframe src="embedcalc.html" width="500px" height="500px">
         </div>
+	    <div class="temperature">
+		<button onclick="fetchTemperature()">Fetch Temperature(CPU)</button>
+		    <p id="temperature"></p>
+	    </div>
 	
         
             
