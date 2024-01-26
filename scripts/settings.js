@@ -17,8 +17,7 @@ function i() {
     const v = document.getElementById('bg_color').value;
     console.log(v);
     return v
-}
-function getSystemInformation() {
+}function getSystemInformation() {
     const systemInfo = {
         userAgent: navigator.userAgent,
         language: navigator.language,
