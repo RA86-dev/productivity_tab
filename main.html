@@ -416,6 +416,81 @@ function displaySystemInformation() {
     systemInfoDiv.innerHTML = systemInfoString;
 }
 </script>
+	
+<script>
+	
+displaySystemInformation();
+ gsap.to("#search-container", {
+        duration: 0.5, // Animation duration in seconds
+        backgroundColor: "#ff0000", // Target background color
+        ease: "power1.inOut", // Easing function
+        paused: true // Animation starts paused
+    });
+
+    // Add event listener to trigger animation on hover
+
+        gsap.to("#search-container", { backgroundColor: "#ff0000", duration: 0.5 });
+
+
+
+        gsap.to("#search-container", { backgroundColor: "#FFFFFF", duration: 0.5 });
+    // Function to create and start the timer
+    function startTimer(durationInSeconds) {
+        let timeLeft = durationInSeconds;
+
+        // Function to update the timer display
+        function updateTimer() {
+            const timerDisplay = document.getElementById('timerDisplay');
+
+            // Update the timer display
+            timerDisplay.textContent = formatTime(timeLeft);
+
+            // Decrease the time left
+            timeLeft--;
+
+            // Check if the timer has reached 0
+            if (timeLeft < 0) {
+                clearInterval(timerInterval);
+                document.getElementById('xzz').play();
+            }
+        }
+
+        // Function to format the time in MM:SS format
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+
+        // Initial update
+        updateTimer();
+
+        // Set up the timer interval (1000 milliseconds = 1 second)
+        const timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Function to handle the 'Time' button click
+    function time() {
+        const data = document.getElementById('x').value;
+        let time = data * 60;
+        startTimer(time);
+    }
+	function search() {
+        const  r =document.getElementById('select').value;
+        const text = encodeURIComponent(document.getElementById('search-bar').value);
+        const url = r + text
+        window.location.href = `${url}`
+
+    
+    }
+	function credits() {
+		window.location.href = "credits.html";
+	}
+	function question() {
+		window.open('https://forms.gle/RaRZTUVkJ45k5J1G8')
+	}
+</script>
+
 <script src="/productivity_tab/scripts/conversion_script.js"></script>
 <script src="/productivity_tab/scripts/main_.js"></script>
 <script src="/productivity_tab/scripts/alarm.js"></script>
@@ -570,77 +645,6 @@ function displaySystemInformation() {
             
     </div>
 	
-<script>
-	
-displaySystemInformation();
- gsap.to("#search-container", {
-        duration: 0.5, // Animation duration in seconds
-        backgroundColor: "#ff0000", // Target background color
-        ease: "power1.inOut", // Easing function
-        paused: true // Animation starts paused
-    });
-
-    // Add event listener to trigger animation on hover
-
-        gsap.to("#search-container", { backgroundColor: "#ff0000", duration: 0.5 });
-
-
-
-        gsap.to("#search-container", { backgroundColor: "#FFFFFF", duration: 0.5 });
-    // Function to create and start the timer
-    function startTimer(durationInSeconds) {
-        let timeLeft = durationInSeconds;
-
-        // Function to update the timer display
-        function updateTimer() {
-            const timerDisplay = document.getElementById('timerDisplay');
-
-            // Update the timer display
-            timerDisplay.textContent = formatTime(timeLeft);
-
-            // Decrease the time left
-            timeLeft--;
-
-            // Check if the timer has reached 0
-            if (timeLeft < 0) {
-                clearInterval(timerInterval);
-                document.getElementById('xzz').play();
-            }
-        }
-
-        // Function to format the time in MM:SS format
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = seconds % 60;
-            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-        }
-
-        // Initial update
-        updateTimer();
-
-        // Set up the timer interval (1000 milliseconds = 1 second)
-        const timerInterval = setInterval(updateTimer, 1000);
-    }
-
-    // Function to handle the 'Time' button click
-    function time() {
-        const data = document.getElementById('x').value;
-        let time = data * 60;
-        startTimer(time);
-    }
-	function search() {
-        const  r =document.getElementById('select').value;
-        const text = encodeURIComponent(document.getElementById('search-bar').value);
-        const url = r + text
-        window.location.href = `${url}`
-
-    
-    }
-	function credits() {
-		window.location.href = "credits.html";
-	}
-</script>
-
 
 </body>
 </html>
